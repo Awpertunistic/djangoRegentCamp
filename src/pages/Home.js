@@ -1,17 +1,26 @@
 import React from "react";
+import "./Home.css";
+import Forest from "./Forest.jpg";
 
 function Home() {
   return (
     <div>
-      <h1>Welcome to my React App!</h1>
-      <p>
-        This is the home page. Here you can find information about our app and
-        what it does.
-      </p>
-      <form>
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname"></input>
-      </form>
+      <body>
+        <div className="container">
+          <img
+            src={Forest}
+            alt="Forest"  
+          ></img>
+          <div className="text">
+            <h1>Welcome to the Regent Camp Registry</h1>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="container">
+            <p class="footer__text">Copyright © 2023</p>
+          </div>
+        </footer>
+      </body>
     </div>
   );
 }
