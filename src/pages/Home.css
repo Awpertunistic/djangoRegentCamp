@@ -5,26 +5,49 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.container {
+.section-opening {
   position: relative;
-}
-
-.container img {
-  width: 100%;
-  height: auto;
-}
-
-.text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  color: rgb(255, 255, 255);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
+  color: white;
 }
+
+  .section-opening-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .section-opening-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+  }
+
+.section-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  float: right;
+  height: auto;
+  }
+
+  .section-content-text {
+    margin-right: 50px;
+    margin-left: 200px;
+  }
+
+  .section-content-img {
+    width: 50%;
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-bottom: 100px;
+    box-shadow: 7px 5px 5px rgba(0, 0, 0, 0.568);
+  }
 
 .wrapper {
     min-height: 100%;
@@ -33,15 +56,45 @@
   }
 
 .footer {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    text-align: center;
-    height: 60px;
-    margin-top: auto;
+  bottom: 0;
+  text-align: center;
+  height: 80px;
+  background: linear-gradient(90deg, #249c2a 0%, #37773c 100%);
+  clear: both;
+  width: 100%;
+  }
+
+  .footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin-bottom: 10px;
+  }
+
+  .footer__links li {
+    margin: 0 20px;
+  }
+  
+  .footer__links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .footer__links a:hover {
+    text-decoration: underline;
   }
   
   .footer__text {
     font-size: 0.8rem;
     margin: 0;
+    color: white;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
