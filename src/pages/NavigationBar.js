@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./NavigationBar.css";
 
 export default function Navbar() {
   return (
@@ -9,6 +10,7 @@ export default function Navbar() {
       <ul>
         <CustomLink to="/Registration">Registration</CustomLink>
         <CustomLink to="/Status">Status</CustomLink>
+        <CustomLink to="/CampManagement">Camp Management</CustomLink>
       </ul>
     </nav>
   );
