@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./Registration.css";
 
 class Registration extends Component {
@@ -54,7 +55,23 @@ class Registration extends Component {
       return;
     }
 
-    // perform form submission action (e.g. send data to server)
+    axios
+      .post("/api/register/", {
+        parentname,
+        campername,
+        camperage,
+        grade,
+        contactphone,
+        email,
+        campselect,
+        regstatus,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
