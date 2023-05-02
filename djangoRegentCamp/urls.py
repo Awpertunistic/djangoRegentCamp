@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
+from .views import send_emails
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/send-emails/', send_emails, name='send-emails'),
     path('', TemplateView.as_view(template_name='index.html'))
 ]
