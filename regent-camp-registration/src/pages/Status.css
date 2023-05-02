@@ -1,4 +1,8 @@
-table {
+.table-container {
+    position: relative;
+  }
+  
+  table {
     border-collapse: collapse;
     width: 100%;
     font-family: Arial, sans-serif;
@@ -44,4 +48,24 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  
+  .submit-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #3e8e41;
   }

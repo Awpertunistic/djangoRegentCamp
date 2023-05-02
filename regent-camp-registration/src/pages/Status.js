@@ -14,23 +14,29 @@ function Status({ students }) {
     setUpdatedStudents(newStudents);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(updatedStudents);
+    // You can add your code to submit the updated students' data to the server here
+  };
+
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Camper Name</th>
-            <th>Age</th>
-            <th>Grade</th>
-            <th>Contact Phone</th>
-            <th>Email</th>
-            <th>Camp Selection</th>
-            <th>Registration Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {updatedStudents &&
-            updatedStudents.map((student, index) => (
+      <form onSubmit={handleSubmit}>
+        <table>
+          <thead>
+            <tr>
+              <th>Camper Name</th>
+              <th>Age</th>
+              <th>Grade</th>
+              <th>Contact Phone</th>
+              <th>Email</th>
+              <th>Camp Selection</th>
+              <th>Registration Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {updatedStudents.map((student, index) => (
               <tr key={index}>
                 <td>{student.campername}</td>
                 <td>{student.camperage}</td>
@@ -52,8 +58,12 @@ function Status({ students }) {
                 </td>
               </tr>
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        <button className="submit-button" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
