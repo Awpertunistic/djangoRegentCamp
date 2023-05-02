@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Status.css";
 
 function Status({ students }) {
@@ -17,7 +18,14 @@ function Status({ students }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(updatedStudents);
-    // You can add your code to submit the updated students' data to the server here
+    axios
+      .post("/api/update_reg_status/", updatedStudents)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
