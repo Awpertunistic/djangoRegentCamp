@@ -19,7 +19,7 @@ function Status({ students }) {
     event.preventDefault();
     console.log(updatedStudents);
     axios
-      .post("/api/update_reg_status/", updatedStudents)
+      .post("/backend/update_reg_status/", updatedStudents)
       .then((response) => {
         console.log(response.data);
       })
