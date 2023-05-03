@@ -21,7 +21,7 @@ function CampManagement() {
 
   const handleSendEmail = () => {
     axios
-      .post("/api/send-emails/", {
+      .post("/backend/send-emails/", {
         camp: selectedCamp,
         subject: emailSubject,
         message: emailMessage,
