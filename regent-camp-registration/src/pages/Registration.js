@@ -56,7 +56,7 @@ class Registration extends Component {
     }
 
     axios
-      .post("/api/register/", {
+      .post("/backend/register/", {
         parentname,
         campername,
         camperage,
