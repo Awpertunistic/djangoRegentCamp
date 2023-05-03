@@ -1,6 +1,6 @@
 from django.db import models
 
-
+#Takes newly added registration and determines if they're waitlisted or registered
 def assignStatus():
     currApp = CampApplications.objects.latest('CreationTime')
     print(currApp.Program)
@@ -11,7 +11,7 @@ def assignStatus():
     return
 
 
-
+#Deletes application then determines if a new user can be taken off the waitlist
 def deleteApp(objectID, campProgram):
     CampApplications.objects.get(objectID).delete()
 
@@ -41,3 +41,7 @@ class CampApplications(models.Model):
     Program = models.CharField(max_length=25, choices=PROGRAM_CHOICES, default='Biophysical')
     Status = models.BooleanField(auto_created=True, default=False)
     CreationTime = models.DateTimeField(auto_now_add=True)
+
+class Camp(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
