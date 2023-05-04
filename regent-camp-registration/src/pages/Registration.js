@@ -7,13 +7,14 @@ class Registration extends Component {
     super(props);
     this.state = {
       parentname: "",
+      address: "",
       campername: "",
       camperage: "",
-      grade: "",
+      grade: "9th",
       contactphone: "",
       email: "",
       campselect: "",
-      regstatus: "",
+      regstatus: "Registered",
     };
   }
 
@@ -29,6 +30,7 @@ class Registration extends Component {
     event.preventDefault();
     const {
       parentname,
+      address,
       campername,
       camperage,
       grade,
@@ -57,14 +59,15 @@ class Registration extends Component {
 
     axios
       .post("/backend/register/", {
-        parentname,
-        campername,
-        camperage,
-        grade,
-        contactphone,
-        email,
-        campselect,
-        regstatus,
+        ParentName: parentname,
+        Address: address,
+        CamperName: campername,
+        CamperAge: camperage,
+        CamperGrade: grade,
+        PhoneNumber: contactphone,
+        Email: email,
+        Program: campselect,
+        Status: regstatus,
       })
       .then((response) => {
         console.log(response.data);
@@ -86,6 +89,16 @@ class Registration extends Component {
                 type="text"
                 name="parentname"
                 value={this.state.parentname}
+                onChange={this.handleInputChange}
+                className="form__input"
+              />
+            </label>
+            <label className="form__label">
+              Address:
+              <input
+                type="text"
+                name="address"
+                value={this.state.address}
                 onChange={this.handleInputChange}
                 className="form__input"
               />

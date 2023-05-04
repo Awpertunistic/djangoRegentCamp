@@ -7,8 +7,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CampApplications
-        fields =('ParentName', 'Address', 'PhoneNumber', 'CamperName', 'CamperAge', 
-                 'CamperGrade', 'Program')
+        fields =('ParentName', 'Address', 'CamperName', 'CamperAge', 
+                 'CamperGrade', 'PhoneNumber', 'Email', 'Program', 'Status')
 
 #Serializer for All Account Information
 class FullInfoSerializer(serializers.ModelSerializer):
