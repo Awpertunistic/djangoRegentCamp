@@ -10,6 +10,14 @@ def assignStatus():
         currApp.save()
     return
 
+def getEmails(campProgram):
+    handler = CampApplications.objects.filter(Program=campProgram)
+    list = []
+
+    if handler.count() == 0:
+        return list
+    
+    return handler.values_list('Email')
 
 #Deletes application then determines if a new user can be taken off the waitlist
 def deleteApp(objectID, campProgram):
@@ -24,10 +32,16 @@ def deleteApp(objectID, campProgram):
 # Create your models here.
 class CampApplications(models.Model):
     PROGRAM_CHOICES = (
-    ('Bio', 'Biophysical'),
+    ('Biophysical', 'Biophysical'),
     ('Robotics', 'Robotics'),
-    ('Cyber', 'Cyber Security'),
+    ('Cyber Security', 'Cyber Security'),
     ('Cryptography', 'Cryptography'),
+    )
+
+    REGISTRATION_CHOICES = (
+        ('Registered', 'Registered'),
+        ('Paid', 'Paid'),
+        ('Waiting List', 'Waiting List')
     )
 
     id = models.BigAutoField(auto_created=True, primary_key=True)
@@ -37,11 +51,8 @@ class CampApplications(models.Model):
     Email = models.CharField(max_length=50)
     CamperName = models.CharField(max_length=20)
     CamperAge = models.IntegerField()
-    CamperGrade = models.IntegerField()
+    CamperGrade = models.CharField(max_length=20)
     Program = models.CharField(max_length=25, choices=PROGRAM_CHOICES, default='Biophysical')
-    Status = models.BooleanField(auto_created=True, default=False)
+    Status = models.CharField(max_length=20, choices=REGISTRATION_CHOICES)
     CreationTime = models.DateTimeField(auto_now_add=True)
 
-class Camp(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.EmailField()

@@ -5,6 +5,6 @@ urlpatterns = [
     path('delete/', deleteApp),
     path('emails/', send_emails),
     #path('update_reg_status/, '),
-    path('send_emails', send_emails),
+    path('send-emails/', send_emails),
     path('register/', registration),
 ]

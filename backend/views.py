@@ -22,9 +22,9 @@ def registration(request):
     
     elif request.method == 'POST':
         serializer = ApplicationSerializer(data=request.data)
+        print(serializer)
         if serializer.is_valid():
             serializer.save()
-            assignStatus()
             return Response(status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -38,18 +38,21 @@ def deleteReq(request):
             deleteProgram = serializer.validated_data.get('Program')
             deleteApp(deleteID, deleteProgram)
 
+# Camp Management Email
 @api_view(['POST'])
 def send_emails(request):
     camp = request.data.get('camp')
     subject = request.data.get('subject')
     message = request.data.get('message')
-
+    
     if not (camp and subject and message):
         return JsonResponse({'error': 'Missing parameters'})
 
     # Get the emails for the selected camp from your database or wherever you store them
-    # Here we assume that you have a Camp model with an email field
-    emails = [camp.email for camp in Camp.objects.filter(name=camp)]
+    emails = getEmails(camp)
+    
+    for address in emails:
+        email_list = address
 
     if not emails:
         return JsonResponse({'error': 'No emails found for the selected camp'})
@@ -59,7 +62,7 @@ def send_emails(request):
         subject=subject,
         message=message,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=emails,
+        recipient_list=email_list,
         fail_silently=False,
     )
 
