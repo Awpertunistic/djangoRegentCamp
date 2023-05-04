@@ -71,9 +71,11 @@ class Registration extends Component {
       })
       .then((response) => {
         console.log(response.data);
+        alert("Successfully Received!");
       })
       .catch((error) => {
         console.log(error);
+        alert("Unable to Submit Request.")
       });
   };
 

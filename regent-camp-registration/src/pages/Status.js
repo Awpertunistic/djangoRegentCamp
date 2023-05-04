@@ -18,13 +18,35 @@ function Status({ students }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(updatedStudents);
+
+    const studentsToDelete = updatedStudents.filter(
+      (student) => student.regstatus === "cancelled"
+    );
+
+    if (studentsToDelete.length > 0) {
+      axios
+        .delete("/backend/delete_students/", {
+          data: { students: studentsToDelete },
+        })
+        .then((response) => {
+          console.log(response.data);
+          alert("Successfully Received!");
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Unable to Submit Request.");
+        });
+    }
+
     axios
       .post("/backend/update_reg_status/", updatedStudents)
       .then((response) => {
         console.log(response.data);
+        alert("Successfully Received!");
       })
       .catch((error) => {
         console.log(error);
+        alert("Unable to Submit Request.");
       });
   };
 
