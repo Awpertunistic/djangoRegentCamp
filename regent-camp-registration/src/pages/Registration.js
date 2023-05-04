@@ -67,7 +67,7 @@ class Registration extends Component {
         PhoneNumber: contactphone,
         Email: email,
         Program: campselect,
-        Status: regstatus,
+        Status: regstatus
       })
       .then((response) => {
         console.log(response.data);
