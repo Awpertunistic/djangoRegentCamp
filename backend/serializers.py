@@ -4,6 +4,7 @@ from .models import CampApplications
 #Serializer for Registration Submission
 class ApplicationSerializer(serializers.ModelSerializer):
     Program = serializers.ChoiceField(choices=CampApplications.PROGRAM_CHOICES)
+    Status = serializers.ChoiceField(choices=CampApplications.REGISTRATION_CHOICES)
 
     class Meta:
         model = CampApplications
