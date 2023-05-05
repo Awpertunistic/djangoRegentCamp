@@ -67,7 +67,7 @@ class Registration extends Component {
         PhoneNumber: contactphone,
         Email: email,
         Program: campselect,
-        Status: regstatus
+        regstatus: regstatus,
       })
       .then((response) => {
         console.log(response.data);
@@ -75,7 +75,7 @@ class Registration extends Component {
       })
       .catch((error) => {
         console.log(error);
-        alert("Unable to Submit Request.")
+        alert("Unable to Submit Request.");
       });
   };
 
