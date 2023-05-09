@@ -15,10 +15,29 @@ import os
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''  #Must Supply Valid Email and Password for functionality.
-EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@gmail.com' #fill these with valid emails for email functionality
+EMAIL_HOST_PASSWORD = 'your_app_password'
+
+# OAuth2 configuration
+EMAIL_USE_SSL = False
+EMAIL_TIMEOUT = 5
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'google.oauth2.credentials.Credentials',
+)
+
+GOOGLE_OAUTH2_CLIENT_ID = 'your_client_id'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'your_client_secret'
+GOOGLE_OAUTH2_REDIRECT_URI = 'http://localhost:8000'
+GOOGLE_OAUTH2_SCOPES = ['https://www.googleapis.com/auth/gmail.compose']
+GOOGLE_OAUTH2_AUTH_URI = 'https://accounts.google.com/o/oauth2/auth'
+GOOGLE_OAUTH2_TOKEN_URI = 'https://accounts.google.com/o/oauth2/token'
+GOOGLE_OAUTH2_USERINFO_URI = 'https://www.googleapis.com/oauth2/v1/userinfo'
+GOOGLE_OAUTH2_TOKENINFO_URI = 'https://www.googleapis.com/oauth2/v3/tokeninfo'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

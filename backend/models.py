@@ -11,13 +11,16 @@ def assignStatus():
     return
 
 def getEmails(campProgram):
-    handler = CampApplications.objects.filter(Program=campProgram)
-    list = []
+    camp_applications = CampApplications.objects.filter(Program=campProgram)
+    emails = []
 
-    if handler.count() == 0:
-        return list
-    
-    return handler.values_list('Email')
+    if camp_applications.count() == 0:
+        return emails
+
+    for application in camp_applications:
+        emails.append((application.CamperName, application.Email))
+
+    return emails
 
 #Deletes application then determines if a new user can be taken off the waitlist
 def deleteApp(objectID, campProgram):
